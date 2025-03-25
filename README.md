@@ -1,23 +1,23 @@
-##Taller Flutter: Navegación, Widgets y Ciclo de Vida
-##Este proyecto es una solución para el taller en el que se requieren las siguientes funcionalidades:
+## Taller Flutter: Navegación, Widgets y Ciclo de Vida
+## Este proyecto es una solución para el taller en el que se requieren las siguientes funcionalidades:
 
-#Navegación y paso de parámetros:
+# Navegación y paso de parámetros:
 Se implementa la navegación utilizando go_router. La aplicación cuenta con rutas para la pantalla principal, una pantalla de ciclo de vida y pantallas para demostrar el paso de parámetros (incluyendo una pantalla de detalle que recibe un parámetro).
 
-#Implementación de widgets personalizados:
+# Implementación de widgets personalizados:
 Se utilizan varios widgets en la pantalla principal:
 
-#GridView: Muestra una lista dinámica de ítems, los cuales se pueden agregar de forma dinámica mediante un FloatingActionButton.
+# GridView: Muestra una lista dinámica de ítems, los cuales se pueden agregar de forma dinámica mediante un FloatingActionButton.
 
-#TabBar y TabBarView: Permiten organizar el contenido en dos secciones (Grid y Lista).
+# TabBar y TabBarView: Permiten organizar el contenido en dos secciones (Grid y Lista).
 
-#FloatingActionButton (FAB): Se utiliza para agregar nuevos ítems al GridView, haciendo la interfaz interactiva y dinámica.
+# FloatingActionButton (FAB): Se utiliza para agregar nuevos ítems al GridView, haciendo la interfaz interactiva y dinámica.
 
-#Evidencia del ciclo de vida de un StatefulWidget:
+# Evidencia del ciclo de vida de un StatefulWidget:
 En la pantalla de ciclo de vida se incluyen print() en los métodos initState(), didChangeDependencies(), build(), setState() y dispose(). Esto permite ver en la consola la secuencia de ejecución de cada uno de estos métodos durante la navegación.
 
-##Estructura del Proyecto
-#La estructura de carpetas y archivos es la siguiente:
+## Estructura del Proyecto
+# La estructura de carpetas y archivos es la siguiente:
 
 
 my_taller_app/
@@ -60,11 +60,11 @@ paso_parametros_screen.dart: Una pantalla de ejemplo para navegar y demostrar el
 
 detalle_screen.dart: Muestra el parámetro recibido en la URL y permite volver a la pantalla anterior.
 
-##Cómo Ejecutar el Proyecto
+## Cómo Ejecutar el Proyecto
 Instalar Flutter:
 Asegúrate de tener instalado Flutter. Consulta la documentación oficial para más detalles.
 
-##Clonar el repositorio:
+## Clonar el repositorio:
 git clone <URL-del-repositorio>
 cd my_taller_app
 Instalar las dependencias:
@@ -75,11 +75,11 @@ Ejecutar la aplicación:
 
 flutter run
 
-##Navegación y Comportamiento
-#Navegación:
+## Navegación y Comportamiento
+# Navegación:
 Se utiliza context.push() para apilar las rutas (por ejemplo, al ir a la pantalla de Detalle o Ciclo de Vida). Esto permite que el botón de retroceso funcione correctamente mediante context.pop().
 
-#Agregado de Ítems:
+# Agregado de Ítems:
 El FloatingActionButton en la pantalla principal incrementa dinámicamente una lista de ítems que se muestran en el GridView. Esto hace la aplicación interactiva y demuestra la actualización de estado con setState().
 
 #Ciclo de Vida:
