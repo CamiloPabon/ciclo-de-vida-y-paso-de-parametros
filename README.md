@@ -21,21 +21,37 @@ En la pantalla de ciclo de vida se incluyen print() en los métodos initState(),
 
 
 my_taller_app/
+
 ├── android/
+
 ├── ios/
+
 ├── lib/
+
 │   ├── main.dart
+
 │   ├── routes/
+
 │   │   └── app_router.dart
+
 │   └── views/
+
 │       ├── home_view.dart
+
 │       ├── ciclo_vida/
+
 │       │   └── ciclo_vida_screen.dart
+
 │       └── paso_parametros/
+
 │           ├── paso_parametros_screen.dart
+
 │           └── detalle_screen.dart
+
 ├── pubspec.yaml
+
 └── README.md
+
 main.dart
 
 Es el punto de entrada de la aplicación. Aquí se configura el MaterialApp.router utilizando go_router (o se invoca el router definido en app_router.dart).
