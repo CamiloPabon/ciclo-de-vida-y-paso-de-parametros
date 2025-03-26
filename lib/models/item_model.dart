@@ -9,3 +9,4 @@ class Item {
     this.isFavorite = false,
   });
 }
+
