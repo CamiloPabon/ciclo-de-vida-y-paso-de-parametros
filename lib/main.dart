@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:widgets/screens/contador_screen.dart';
+import 'package:widgets/screens/lista_estudiantes_screen.dart';
+import 'package:widgets/screens/tarea_pesada_screen.dart';
 import 'package:widgets/utils/favorites_manager.dart';
 import 'screens/home_screen.dart';
 import 'screens/detail_screen.dart';
@@ -48,7 +51,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Gestión de Favoritos'),
@@ -57,6 +60,9 @@ class MainScreen extends StatelessWidget {
               Tab(icon: Icon(Icons.home), text: 'Inicio'),
               Tab(icon: Icon(Icons.star), text: 'Favoritos'),
               Tab(icon: Icon(Icons.settings), text: 'Ajustes'),
+              Tab(icon: Icon(Icons.work), text: 'Tarea Pesada'),
+              Tab(icon: Icon(Icons.list), text: 'Contador'),
+              Tab(icon: Icon(Icons.school), text: 'Lista Estudiantes'),
             ],
           ),
         ),
@@ -65,6 +71,9 @@ class MainScreen extends StatelessWidget {
             HomeScreen(),
             FavoriteScreen(),
             SettingsScreen(),
+            TareaPesadaScreen(),
+            ContadorScreen(),
+            ListaEstudiantesScreen(),
           ],
         ),
       ),
@@ -92,12 +101,16 @@ class FavoriteScreen extends StatelessWidget {
 }
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+  const SettingsScreen({super.key}
+  );
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Ajustes', style: TextStyle(fontSize: 24)),
+    return Center(
+      child: ElevatedButton(
+        onPressed: () => context.go('/ciclo_vida'),
+        child: const Text('Ir a Ciclo de Vida'),
+      ),
     );
   }
 }

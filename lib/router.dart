@@ -1,4 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:widgets/screens/contador_screen.dart';
+import 'package:widgets/screens/lista_estudiantes_screen.dart';
+import 'package:widgets/screens/tarea_pesada_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/detail_screen.dart';
 import 'screens/ciclo_vida_screen.dart';
@@ -19,6 +22,18 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/ciclo_vida',
       builder: (context, state) => CicloVidaScreen(),
+    ),
+    GoRoute(
+      path: '/estudiantes',
+      builder: (context, state) => const ListaEstudiantesScreen(),
+    ),
+    GoRoute(
+      path: '/contador',
+      builder: (context, state) => const ContadorScreen(),
+    ),
+    GoRoute(
+      path: '/tarea_pesada',
+      builder: (context, state) => const TareaPesadaScreen(),
     ),
   ],
 );
