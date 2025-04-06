@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class TareaPesadaScreen extends StatefulWidget {
-  const TareaPesadaScreen({Key? key}) : super(key: key);
+  const TareaPesadaScreen({super.key});
 
   @override
   _TareaPesadaScreenState createState() => _TareaPesadaScreenState();

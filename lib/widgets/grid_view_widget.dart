@@ -3,20 +3,24 @@ import '../models/item_model.dart';
 import '../utils/favorites_manager.dart';
 import 'package:go_router/go_router.dart';
 
-class GridViewWidget extends StatelessWidget {
+class GridViewWidget extends StatefulWidget {
+  const GridViewWidget({super.key});
+
+  @override
+  State<GridViewWidget> createState() => _GridViewWidgetState();
+}
+
+class _GridViewWidgetState extends State<GridViewWidget> {
   final List<Item> items = List.generate(
     12,
     (index) => Item(id: index, title: 'Item $index'),
   );
 
-  GridViewWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      physics: const NeverScrollableScrollPhysics(), // Deshabilitar el desplazamiento
       padding: const EdgeInsets.all(16),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
@@ -25,8 +29,13 @@ class GridViewWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = items[index];
         final isFavorite = FavoritesManager.isFavorite(item);
+
         return GestureDetector(
-          onTap: () => context.go('/detail/${item.id}'),
+          onTap: () {
+            setState(() {
+              FavoritesManager.toggleFavorite(item);
+            });
+          },
           child: Card(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

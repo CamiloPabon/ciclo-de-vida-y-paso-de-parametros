@@ -73,3 +73,29 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 }
+
+class FavoriteScreen extends StatelessWidget {
+  const FavoriteScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final favorites = FavoritesManager.favorites;
+
+    if (favorites.isEmpty) {
+      return const Center(
+        child: Text('No hay favoritos aún', style: TextStyle(fontSize: 18)),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: favorites.length,
+      itemBuilder: (context, index) {
+        final item = favorites[index];
+        return ListTile(
+          title: Text(item.title),
+          onTap: () => context.go('/detail/${item.id}'),
+        );
+      },
+    );
+  }
+}

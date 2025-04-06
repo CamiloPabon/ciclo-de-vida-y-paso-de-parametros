@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../data/estudiantes_data.dart'; // Importa la lista de estudiantes
 
 class ListaEstudiantesScreen extends StatelessWidget {
-  const ListaEstudiantesScreen({Key? key}) : super(key: key);
+  const ListaEstudiantesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

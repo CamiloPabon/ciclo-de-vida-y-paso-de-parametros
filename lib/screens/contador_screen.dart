@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class ContadorScreen extends StatefulWidget {
-  const ContadorScreen({Key? key}) : super(key: key);
+  const ContadorScreen({super.key});
 
   @override
   _ContadorScreenState createState() => _ContadorScreenState();
