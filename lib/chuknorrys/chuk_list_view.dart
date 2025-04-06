@@ -18,7 +18,7 @@ class _ChucknorrisListViewState extends State<ChucknorrisListView> {
   @override
   void initState() {
     super.initState();
-    _futureChuckList = _chuckService.getMultipleChuckNorris(10);
+    _futureChuckList = _chuckService.getMultipleChuckNorris(100);
   }
 
   @override

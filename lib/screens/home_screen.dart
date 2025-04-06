@@ -23,7 +23,10 @@ class BaseView extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text(title),
-            bottom: TabBar(tabs: tabs!),
+            bottom: TabBar(
+              isScrollable: true,
+              tabs: tabs!),
+            
           ),
           body: TabBarView(children: children!),
         ),
