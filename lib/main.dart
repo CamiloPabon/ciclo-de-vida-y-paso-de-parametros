@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widgets/utils/favorites_manager.dart';
 import 'screens/home_screen.dart';
 import 'screens/detail_screen.dart';
 import 'screens/ciclo_vida_screen.dart';
+import 'screens/lista_estudiantes_screen.dart';
+import 'screens/contador_screen.dart';
+import 'screens/tarea_pesada_screen.dart';
+import 'chuknorrys/chucknorris_detail_screen.dart';
+import 'chuknorrys/chuk_list_view.dart';
+import 'screens/home_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Gestión de Favoritos',
-      routerConfig: router,
-      theme: ThemeData(primarySwatch: Colors.blue),
-    );
-  }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  runApp(const MyApp());
 }
 
 final GoRouter router = GoRouter(
@@ -37,37 +33,71 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/ciclo_vida',
-      builder: (context, state) => const CicloVidaScreen(),
+      builder: (context, state) => CicloVidaScreen(),
+    ),
+    GoRoute(
+      path: '/estudiantes',
+      builder: (context, state) => const ListaEstudiantesScreen(),
+    ),
+    GoRoute(
+      path: '/contador',
+      builder: (context, state) => const ContadorScreen(),
+    ),
+    GoRoute(
+      path: '/tarea_pesada',
+      builder: (context, state) => const TareaPesadaScreen(),
+    ),
+    GoRoute(
+      path: '/chucknorris',
+      builder: (context, state) => ChucknorrisListView(),
+    ),
+    GoRoute(
+      path: '/chucknorris/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+        return ChuckNorrisDetailScreen(id: id);
+      },
     ),
   ],
 );
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Gestión de Favoritos'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.home), text: 'Inicio'),
-              Tab(icon: Icon(Icons.star), text: 'Favoritos'),
-              Tab(icon: Icon(Icons.settings), text: 'Ajustes'),
-            ],
-          ),
-        ),
-        body: const TabBarView(
-          children: [
-            HomeScreen(),
-            FavoriteScreen(),
-            SettingsScreen(),
-          ],
-        ),
-      ),
+    return BaseView(
+      title: 'Gestión de Funcionalidades',
+      tabs: const [
+        Tab(icon: Icon(Icons.home), text: 'Inicio'),
+        Tab(icon: Icon(Icons.star), text: 'Favoritos'),
+        Tab(icon: Icon(Icons.settings), text: 'Ajustes'),
+        Tab(icon: Icon(Icons.school), text: 'Estudiantes'),
+        Tab(icon: Icon(Icons.calculate), text: 'Contador'),
+        Tab(icon: Icon(Icons.work), text: 'Tarea Pesada'),
+        Tab(icon: Icon(Icons.emoji_emotions), text: 'Chuck Norris'),
+      ],
+      children: const [
+        HomeScreen(),
+        FavoriteScreen(),
+        SettingsScreen(),
+        ListaEstudiantesScreen(),
+        ContadorScreen(),
+        TareaPesadaScreen(),
+        ChucknorrisListView(),
+      ],
     );
   }
 }
